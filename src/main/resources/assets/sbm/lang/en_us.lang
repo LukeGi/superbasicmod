@@ -1,0 +1,6 @@
+# Creative Tabs
+itemGroup.sbm=Basic Tab
+# Blocks
+tile.sbm:basic_block.name=Basic Block
+# Items
+item.sbm:basic_item.name=Basic Item
