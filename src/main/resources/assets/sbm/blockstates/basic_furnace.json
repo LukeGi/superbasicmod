@@ -1,0 +1,30 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:orientable",
+    "textures": {
+      "front": "sbm:blocks/basic_furnace",
+      "top": "sbm:blocks/machine_top",
+      "side": "sbm:blocks/machine_side"
+    }
+  },
+  "variants": {
+    "facing": {
+      "north": {
+        "y": 0
+      },
+      "east": {
+        "y": 90
+      },
+      "south": {
+        "y": 180
+      },
+      "west": {
+        "y": 270
+      }
+    },
+    "inventory": {
+      "y": 0
+    }
+  }
+}

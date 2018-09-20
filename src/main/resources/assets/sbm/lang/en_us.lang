@@ -4,3 +4,5 @@ itemGroup.sbm=Basic Tab
 tile.sbm:basic_block.name=Basic Block
 # Items
 item.sbm:basic_item.name=Basic Item
+# Config
+sbm.config.furnace_fe=Basic Furnace FE Per Tick

@@ -1,8 +1,11 @@
 package bluemonster122.sbm;
 
 import bluemonster122.sbm.block.BlockBasic;
+import bluemonster122.sbm.block.BlockMachine;
 import bluemonster122.sbm.item.ItemBasic;
 import bluemonster122.sbm.item.block.ItemBlockBasic;
+import bluemonster122.sbm.item.block.ItemBlockMachine;
+import bluemonster122.sbm.tile.TileBasicFurnace;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -20,28 +23,35 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModRegistry {
     @SubscribeEvent
     public static void onRegisterBlocks(Register<Block> event) {
-        event.getRegistry().register(new BlockBasic(Material.WOOD, "basic_block"));
+        event.getRegistry().registerAll(
+                new BlockBasic(Material.WOOD, "basic_block"),
+                new BlockMachine("basic_furnace", (world, state) -> new TileBasicFurnace()));
     }
 
     @SubscribeEvent
     public static void onRegisterItems(Register<Item> event) {
-        event.getRegistry().register(new ItemBlockBasic(ModBlocks.BASIC_BLOCK));
-        event.getRegistry().register(new ItemBasic("basic_item"));
+        event.getRegistry().registerAll(
+                new ItemBlockBasic(ModBlocks.BASIC_BLOCK),
+                new ItemBlockMachine(ModBlocks.BASIC_FURNACE),
+                new ItemBasic("basic_item"));
     }
 
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public static void onRegisterModels(ModelRegistryEvent event) {
         setInventoryModel(ModItems.BASIC_BLOCK);
+        setInventoryModel(ModItems.BASIC_FURNACE);
         setInventoryModel(ModItems.BASIC_ITEM);
     }
 
     private static void setInventoryModel(ItemBlockBasic item) {
         setInventoryModel(item, 0, item.getName());
     }
+
     private static void setInventoryModel(ItemBasic item) {
         setInventoryModel(item, 0, item.getName());
     }
+
     private static void setInventoryModel(Item item, int meta, ResourceLocation name) {
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(name, "inventory"));
     }
